@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: zepingzhang
+  Date: 31/05/2022
+  Time: 11:28
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <title>Title</title>
+    <link href="css/login+signup.css" type="text/css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/primeflex@2.0.0/primeflex.min.css" rel="stylesheet" />
+</h:head>
+
+
+<h:body style="background: #27296d">
+    <h:form>
+        <p:toolbar style="background: #27296d; border-color: #27296d">
+            <p:toolbarGroup>
+                <p:commandLink>
+                    <h:graphicImage value="/images/logo.png" style="width: 150px" />
+                </p:commandLink>
+            </p:toolbarGroup>
+        </p:toolbar>
+    </h:form>
+    <div class="p-grid p-justify-center">
+        <div class="p-col-4">
+            <h:form>
+                <p:panel header="Signup" style="text-align: center;" >
+                    <h:panelGrid columns="2" columnClasses="label, value" style="margin: 0 auto;" >
+                        <h:outputText value="Name: " />
+                        <p:inputText required="false" value="#{customerTable.custName}"/>
+
+                        <h:outputText value="Phone: " />
+                        <p:inputText required="false" value="#{CustInfo.custPhone}"/>
+
+                        <h:outputText value="Email: " />
+                        <p:inputText required="false" value="#{CustInfo.custEmail}"/>
+
+                        <h:outputText value="Username: "  />
+                        <p:inputText required="true" value="#{customerTable.custUsername}"/>
+
+                        <h:outputText value="Password: " />
+                        <p:password value="#{customerTable.custPassword}" style="width: 195px" toggleMask="true" redisplay="true"/>
+
+                    </h:panelGrid>
+
+                    <br/>
+                    <h:commandButton action="#{CustController.signup()}" value="SIGNUP" style="background: rgba(99,102,213,0.88);
+                    color: rgba(252,224,253,0.91); width: 100px; height: 40px; border-radius: .25rem;
+                    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0; border: 0px;"></h:commandButton>
+                    <div class="create-account-wrap">
+                        <p>Already have an account? <a href="user_login.xhtml">Login</a></p>
+                    </div>
+                </p:panel>
+            </h:form>
+        </div>
+    </div>
+
+</h:body>
+
+</html>

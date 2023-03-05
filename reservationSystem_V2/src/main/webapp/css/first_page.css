@@ -1,0 +1,37 @@
+.button_large
+{
+    background: #f5c7f7;
+    width: 20vw;
+    height: 8vw;
+    margin: 10px;
+    font-size: 28px;
+    color: #5e63b6;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    border: 0px;
+    font-family: Inter;
+}
+
+.button_large:hover {
+    border-color: #5e63b6;
+    background: rgba(245, 199, 247, 0.65);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.container {
+    height: 500px;
+    position: relative;
+
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: .25rem;
+}
+
+

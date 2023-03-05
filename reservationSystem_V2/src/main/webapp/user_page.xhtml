@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: zepingzhang
+  Date: 31/05/2022
+  Time: 11:31
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <title>Title</title>
+    <link href="css/login+signup.css" type="text/css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/primeflex@2.0.0/primeflex.min.css" rel="stylesheet" />
+</h:head>
+
+<h:body style="background: #27296d">
+    <h:form>
+        <p:toolbar style="background: #27296d; margin-bottom: 0px ; margin-left: 20px; margin-right: 50px; border-right-color: #27296d; border-left-color: #27296d; border-top-color: #27296d; border-bottom-color: #34378c ">
+            <p:toolbarGroup>
+                <p:commandLink>
+                    <h:graphicImage value="/images/logo.png" style="width: 100px" />
+                </p:commandLink>
+            </p:toolbarGroup>
+            <p:toolbarGroup align="right">
+                <h:commandButton action="#{CustController.logout()}" value="Logout" style="background: rgba(99,102,213,0.88);
+                    color: rgba(252,224,253,0.91); width: 80px; height: 30px; border-radius: .25rem;
+                    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0; border: 0px;"></h:commandButton>
+            </p:toolbarGroup>
+        </p:toolbar>
+    </h:form>
+    <div class="p-grid p-justify-center">
+        <div class="p-col-6">
+            <h:form>
+                <p:panel header="Login as: #{customerTable.custName}" >
+
+                    <h2>My reservations: </h2>
+
+                    <div class="card">
+                        <p:dataTable var="reservation" value="#{CustController.returned_reservations()}">
+                            <p:column headerText="Restaurant">
+                                <h:outputText value="#{reservation.restName}" />
+                            </p:column>
+
+                            <p:column headerText="Time">
+                                <h:outputText value="#{reservation.time}" />
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+
+                    <h2>My informations: </h2>
+                    <h:panelGrid columns="4" columnClasses="label, value, label, value" style="margin: 0 auto;" >
+                        <h:outputText value="Username: " />
+                        <h:outputText value="#{customerTable.custUsername}" />
+
+                        <h:outputText value="Password: " />
+                        <h:outputText value="#{customerTable.custPassword}" />
+
+                        <h:outputText value="Email: " />
+                        <h:outputText value="#{CustInfo.custEmail}" />
+
+                        <h:outputText value="Phone: " />
+                        <h:outputText value="#{CustInfo.custPhone}" />
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>
+        </div>
+    </div>
+
+</h:body>
+
+</html>

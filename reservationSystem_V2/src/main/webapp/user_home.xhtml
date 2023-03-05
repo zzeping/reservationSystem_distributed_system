@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: zepingzhang
+  Date: 31/05/2022
+  Time: 11:30
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <title>Title</title>
+    <link href="css/login+signup.css" type="text/css" rel="stylesheet" />
+    <link href="css/layout.css" type="text/css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/primeflex@2.0.0/primeflex.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/primeflex/themes/saga-blue.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.2/primeflex.css"/>
+
+</h:head>
+
+<!--<f:metadata>-->
+<!--    <f:event type="preRenderView" listener="#{CustController.login()}"/>-->
+<!--</f:metadata>-->
+
+<h:body style="background: #27296d">
+    <h:form>
+        <p:toolbar style="background: #27296d; margin-bottom: 0px ; margin-left: 20px; margin-right: 50px; border-right-color: #27296d; border-left-color: #27296d; border-top-color: #27296d; border-bottom-color: #34378c ">
+            <p:toolbarGroup>
+                <p:commandLink>
+                    <h:graphicImage value="/images/logo.png" style="width: 100px" />
+                </p:commandLink>
+            </p:toolbarGroup>
+            <p:toolbarGroup align="right">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="city" value="City: " style="color: #f5c7f7"/>
+                    <p:selectOneMenu id="city"  value="#{CustController.selectedCity}" style="background-color: rgba(251,225,252,0.92)  ;">
+                        <f:selectItem itemValue="All" itemLabel="All"/>
+                        <f:selectItem itemValue="Leuven" itemLabel="Leuven"/>
+                        <f:selectItem itemValue="Brussels" itemLabel="Brussels"/>
+                        <f:selectItem itemValue="Bruges" itemLabel="Bruges"/>
+                        <f:selectItem itemValue="Antwerp" itemLabel="Antwerp"/>
+                        <f:selectItem itemValue="Ghent" itemLabel="Ghent"/>
+                        <f:selectItem itemValue="Liege" itemLabel="Liege"/>
+                        <p:ajax event="change" update=":form1:returnedRestaurant"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+
+
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel for="genre" value="Genre: " style="color: #f5c7f7"/>
+                        <p:selectOneMenu id="genre" value="#{CustController.selectedGenre}" style=" background-color: rgba(251,225,252,0.92) ;">
+                            <f:selectItem itemValue="All" itemLabel="All"/>
+                            <f:selectItem itemValue="French" itemLabel="French"/>
+                            <f:selectItem itemValue="Italian" itemLabel="Italian"/>
+                            <f:selectItem itemValue="Chinese" itemLabel="Chinese"/>
+                            <f:selectItem itemValue="Japanese" itemLabel="Japanese"/>
+                            <f:selectItem itemValue="Indian" itemLabel="Indian"/>
+                            <p:ajax event="change" update=":form1:returnedRestaurant"/>
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+
+                <p:commandButton action="#{CustController.toUserConfigPage()}" type="submit" style="color: #f5c7f7;" icon="pi pi-user" styleClass="rounded-button ui-button-info ui-button-outlined" />
+            </p:toolbarGroup>
+        </p:toolbar>
+    </h:form>
+
+    <div class="p-grid p-justify-center">
+        <div class="p-col-8">
+            <div class="product card">
+                <h:form id="form1">
+                    <p:dataScroller id="returnedRestaurant" value="#{CustController.returned_restaurants()}" var="restaurant" chunkSize="10" mode="inline"
+                                    scrollHeight="650">
+                        <f:facet name="header">
+                            View the restaurants and make a reservation :)
+                        </f:facet>
+
+                        <div class="product">
+                            <div class="product-list-item p-p-5">
+                                <p:graphicImage value="/images/2.png"/>
+                                <div class="product-list-detail">
+                                    <div class="product-name">#{restaurant.restName}</div>
+                                    <div class="product-description">Location: #{restaurant.restLocation}</div>
+                                    <div class="product-description">Description: #{restaurant.restDescription}</div>
+                                    <i class="pi pi-tags product-category-icon"/><span
+                                        class="product-category"> #{restaurant.restCity}, #{restaurant.restGenre}</span>
+                                </div>
+                                <div class="product-list-action">
+                                    <p:commandButton action="#{CustController.bookRestaurant(restaurant.restId, restaurant.restName)}" value="Book" icon="pi pi-calendar"></p:commandButton>
+                                </div>
+                            </div>
+                        </div>
+                    </p:dataScroller>
+                </h:form>
+            </div>
+        </div>
+    </div>
+
+
+</h:body>
+
+</html>

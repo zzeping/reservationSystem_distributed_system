@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: zepingzhang
+  Date: 30/05/2022
+  Time: 17:50
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Title</title>
+    <link href="css/first_page.css" type="text/css" rel="stylesheet" />
+</h:head>
+
+<h:body style="background: #27296d">
+    <h:form>
+        <p:toolbar style="background: #27296d; border-color: #27296d">
+            <p:toolbarGroup >
+                <p:commandLink>
+                    <h:graphicImage value="/images/logo.png" style="width: 200px" />
+                </p:commandLink>
+            </p:toolbarGroup>
+        </p:toolbar>
+    </h:form>
+
+    <h:form>
+    <div class="container">
+        <div class="center">
+            <h2 style="color: #f5c7f7; margin-left: 10px; font-family: Inter;">I am ... </h2>
+            <h:commandButton value="User"  type="submit" action="user_login.xhtml" styleClass="button_large"></h:commandButton>
+            <h:commandButton value="Restaurant"  type="submit" action="restaurant_login.xhtml" styleClass="button_large"></h:commandButton>
+        </div>
+    </div>
+    </h:form>
+
+
+</h:body>
+
+</html>
